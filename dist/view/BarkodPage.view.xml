@@ -1,0 +1,114 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:m="sap.m" xmlns:tnt="sap.tnt"
+	xmlns:semantic="sap.m.semantic" xmlns:fb="sap.ui.comp.filterbar" xmlns:c="sap.ui.core" xmlns:layout="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:form="sap.ui.layout.form"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:u="sap.ui.unified" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" xmlns:ui="sap.ca.ui" xmlns:table="sap.ui.table" xmlns:footerbar="sap.ushell.ui.footerbar"
+	controllerName="com.bizim.depotransfer.ZMM007_DEPO_TRANSFER.controller.BarkodPage">
+	<Page>
+		<content>
+			<tnt:ToolHeader>
+				<ToolbarSpacer width="auto"/>
+				<Button press="onOkutulmayanBarkodlar" text="Okutulmayan Barkod" type="Ghost" iconFirst="false" width="auto" enabled="true"
+					visible="{ParkodPageView>/EnableOkutulmayanBarkodlar}" iconDensityAware="false">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low"/>
+					</layoutData>
+				</Button>
+				<Button id="idEksikBarkod" text="Eksik Barkod" type="Ghost" iconFirst="false" width="auto" press="onEksikBarkodlar"
+					enabled="{ParkodPageView>/EnableEksikBarkod}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low"/>
+					</layoutData>
+				</Button>
+				<Button id="idFazlaBarkodlar" press="onFazlaBarkodlar" text="Fazla Barkod" type="Ghost" iconFirst="false" width="auto"
+					enabled="{ParkodPageView>/EnableFazlaBarkodlar}" visible="true" iconDensityAware="false">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low"/>
+					</layoutData>
+				</Button>
+				<tnt:ToolHeaderUtilitySeparator/>
+			</tnt:ToolHeader>
+			<form:SimpleForm id="simpleFormId" editable="true" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				layout="ResponsiveGridLayout" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+				<form:content>
+					<core:Title></core:Title>
+					<Label text="{i18n>lblBarkod}"></Label>
+					<Input 	valueHelpRequest="onValueHelpBtnBarkod" type="Number" id="idBarkod" showValueHelp="true" enabled="{ParkodPageView>/EnableBarkod}" visible="true" width="auto"
+						valueHelpOnly="false" maxLength="0"/>
+					<Label text="{i18n>lblMiktar}"></Label>
+					<Input id="idMiktar" enabled="{ParkodPageView>/EnableMiktar}" visible="true" width="auto"></Input>
+					<!--<Label text="Parti Numarası"></Label>-->
+					<!--<Input type="Number" id="idPartiNo" showValueHelp="false" enabled="{ParkodPageView>/EnablePartiNo}" visible="true" width="auto"-->
+					<!--	valueHelpOnly="false" maxLength="0"/>-->
+					<core:Title text=""/>
+					<Label text="{i18n>lblFazlaMiktar}"></Label>
+					<Input type="Number" id="idFazlaMiktar" showValueHelp="false" enabled="{ParkodPageView>/EnableFazlaMiktar}" visible="true" width="auto"
+						valueHelpOnly="false" maxLength="0"/>
+					<Label text="{i18n>lblHasarliMik}"></Label>
+					<Input type="Number" id="idHasarliMik" showValueHelp="false" enabled="{ParkodPageView>/EnableHasarliMik}" visible="true" width="auto"
+						valueHelpOnly="false" maxLength="0"/>
+					<!--<Label text="Tarih"></Label>-->
+					<!--<DatePicker id="idDatePicker" displayFormat="dd.MM.yyyy" class="sapUiSmallMArginBottom" visible="true"/>-->
+					<Label></Label>
+				</form:content>
+			</form:SimpleForm>
+			<Panel id="idPanel" backgroundDesign="Translucent" expandable="true" expanded="true" headerText="" width="auto"
+				class="sapUiResponsiveMargin">
+				<content>
+					<Table items="{ path: 'ParkodPageView>/'}" id="idTable" inset="false" mode="MultiSelect" growing="true" growingThreshold="50"
+						noDataText="Sonuç Bulunamadı">
+						<headerToolbar>
+							<OverflowToolbar>
+								<content>
+									<ToolbarSpacer/>
+									<Button text="Sil" icon="sap-icon://delete" press="onDelete"></Button>
+									<Button id="addProductBtn" text="Barkod Okuma" icon="sap-icon://add" press="onBarkodTemp" enabled="true"></Button>
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Ürün Kodu"/>
+							</Column>
+							<Column>
+								<Text text="Ürün Tanımı"/>
+							</Column>
+							<Column>
+								<Text text="Ürün Miktarı"/>
+							</Column>
+							<Column>
+								<Text text="SKT"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text id="idUrunKod" text="{ParkodPageView>Matnr}"/>
+									<Text id="idUrunTanim" text="{ParkodPageView>Arktx}"/>
+									<Text id="idUrunMiktar" text="{ParkodPageView>Zzmiktar}"/>
+									<Text id="idSKT" text="{ParkodPageView>Vfdat}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Bar design="Auto">
+				<contentLeft/>
+				<contentMiddle/>
+				<contentRight>
+					<Button icon="sap-icon://sys-cancel-2" id="idonBack" press="onBack" text="İptal" type="Reject" iconFirst="true" width="auto"
+						enabled="{ParkodPageView>/EnableidonCancel}" visible="true" iconDensityAware="false"/>
+					<!--<Button id="idBarkodOkuma" press="onBarkodTemp" text="Barkod Okuma" type="Emphasized" icon="sap-icon://bar-code" iconFirst="true"-->
+					<!--	width="auto" enabled="{ParkodPageView>/EnableBarkodOkuma}" visible="true" iconDensityAware="false"/>-->
+					<!--<Button id="idDelete" press="onDelete" text="Sil" type="Reject" icon="sap-icon://sys-cancel-2" iconFirst="true" width="auto"-->
+					<!--	enabled="{ParkodPageView>/EnableonDelete}" visible="true" iconDensityAware="false"/>-->
+					<Button id="idSave" press="onSave" text="Kaydet" type="Accept" icon="sap-icon://save" iconFirst="true" width="auto"
+						enabled="{ParkodPageView>/EnableSave}" visible="true" iconDensityAware="false"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

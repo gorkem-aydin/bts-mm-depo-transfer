@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Barkodlar">
+		<Table items="{ParkodPageView>/Barkodlar}" id="exportTable" inset="false" growing="true" growingThreshold="50" noDataText="Sonuç Bulunamadı">
+			<columns>
+				<Column>
+					<Text text="Ürün Kodu"/>
+				</Column>
+				<Column>
+					<Text text="Ürün Tanımı"/>
+				</Column>
+				<Column>
+					<Text text="Ürün Miktarı"/>
+				</Column>
+				<Column>
+					<Text text="SKT"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{ParkodPageView>Matnr}"/>
+						<Text text="{ParkodPageView>Arktx}"/>
+						<Text text="{ParkodPageView>Zzmiktar}"/>
+						<Text text="{ parts: [ { path:'ParkodPageView>Vfdat' } ], formatter:'.formatter.convertDate' }"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<endButton>
+			<Button text="Kapat" width="7rem" type="Reject" press="onDialogCloseButton"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

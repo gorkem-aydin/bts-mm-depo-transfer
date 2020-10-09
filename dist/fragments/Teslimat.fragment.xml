@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Teslimat Arama Yardımı" class="sapUiPopupWithPadding" items="{worklistView>/Zmm008ShTes}"
+		search="_handleValueHelpSearchTeslimat" confirm="_handleValueHelpCloseTeslimat" cancel="_handleValueHelpCloseTeslimat">
+		<StandardListItem title="Teslimat No: {worklistView>Vbeln}" description="Sevkiyat Nok: {worklistView>Vstel}"
+			info="Teslim Alan : {worklistView>Kunnr}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

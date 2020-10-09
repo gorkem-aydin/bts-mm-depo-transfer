@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="idMatbuIrsaliye" title="Matbu İrsaliye No Arama Yardımı" class="sapUiPopupWithPadding"
+		items="{worklistView>/Zmm008ShLifex}" search="handleValueHelpMatbuIrsaliye" confirm="_handleValueHelpMatbuIrsaliye"
+		cancel="_handleValueHelpCloseMatbuIrsaliye" growingThreshold="50">
+		<StandardListItem  title="{worklistView>Lifex}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

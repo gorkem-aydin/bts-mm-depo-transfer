@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Barkod Arama Yardımı" class="sapUiPopupWithPadding" items="{ParkodPageView>/Zmm009FmShBarkod}"
+		search="_handleValueHelpSearchBarkod" confirm="_handleValueHelpCloseBarkod" cancel="_handleValueHelpCloseBarkod">
+		<StandardListItem title="{ParkodPageView>Ean11}" description="{ParkodPageView>Matnr}"
+			info="{ParkodPageView>Maktx}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

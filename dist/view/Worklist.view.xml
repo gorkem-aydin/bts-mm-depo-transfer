@@ -1,0 +1,36 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.bizim.depotransfer.ZMM007_DEPO_TRANSFER.controller.Worklist" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:form="sap.ui.layout.form" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page title="{i18n>pageTitle}" class="sapUiResponsiveContentPadding" navButtonPress="onNavBack" showNavButton="false" floatingFooter="false">
+		<content>
+			<form:SimpleForm id="simpleFormId" editable="true" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				layout="ResponsiveGridLayout" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+				<form:content>
+					<core:Title></core:Title>
+					<Label text="{i18n>lblEirsaliye}"></Label>
+					<Input type="Number" id="idEirsaliye" showValueHelp="false" enabled="{detailView>/EnableEirsaliye}" visible="true" width="auto"
+						valueHelpOnly="false" maxLength="0"/>
+					<Label text="{i18n>lblMatbuIrsaliye}"></Label>
+					<MultiInput id="idMatbuIrsaliye" app:Id="matnr" app:Name="MAT0M" app:Field="MAKTG" change="onMultiInputIrsaliye" showValueHelp="true"
+						valueHelpRequest="onValueHelpBtn"></MultiInput>
+					<Label text="{i18n>lblGondTeslimat}"></Label>
+					<Input valueHelpRequest="onValueHelpBtnTeslimat"  id="idGondTeslimat" showValueHelp="true" enabled="{detailView>/EnableGondTeslimat}" visible="true" width="auto"
+						valueHelpOnly="false" maxLength="0"/>
+					<Label></Label>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+			<footer>
+			<Bar design="Auto">
+				<contentLeft/>
+				<contentMiddle/>
+				<contentRight>
+					
+					<Button press="onPage2Barkod" text="{i18n>lblIleri}" type="Accept" icon="sap-icon://navigation-right-arrow" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>
